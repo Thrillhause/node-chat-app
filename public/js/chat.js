@@ -1,4 +1,5 @@
 var socket = io();
+var locationButton = jQuery('#send-location');
 
 function scrollToBottom() {
 	// Selectors
@@ -35,6 +36,8 @@ socket.on('connect', function() {
 socket.on('disconnect', function() {
 	console.log('Disconnected from server');
 });
+
+// Chat User List event
 
 socket.on('updateUserList', function(users) {
 	var ol = jQuery('<ol></ol>');
@@ -91,8 +94,6 @@ jQuery('#message-form').on('submit', function(e) {
 		}
 	);
 });
-
-var locationButton = jQuery('#send-location');
 
 locationButton.on('click', function() {
 	if (!navigator.geolocation) {
